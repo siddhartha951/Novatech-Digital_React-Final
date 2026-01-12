@@ -1,0 +1,336 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Novatech Digital - Premium Design System
+   All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Dark theme by default for premium agency feel */
+    --background: 220 60% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 50% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 50% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary - Electric Indigo */
+    --primary: 243 75% 59%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary - Deep Blue */
+    --secondary: 220 60% 12%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 40% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Accent - Cyan */
+    --accent: 187 85% 53%;
+    --accent-foreground: 220 60% 6%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 40% 18%;
+    --input: 220 40% 18%;
+    --ring: 243 75% 59%;
+
+    --radius: 0.75rem;
+
+    /* Novatech Brand Colors */
+    --novatech-midnight: 220 60% 6%;
+    --novatech-deep-blue: 220 60% 12%;
+    --novatech-indigo: 243 75% 59%;
+    --novatech-purple: 270 70% 55%;
+    --novatech-cyan: 187 85% 53%;
+    --novatech-electric: 200 90% 50%;
+    
+    /* Gradient Colors */
+    --gradient-start: 243 75% 59%;
+    --gradient-mid: 270 70% 55%;
+    --gradient-end: 187 85% 53%;
+    
+    /* Glass Effect */
+    --glass-bg: 220 50% 10% / 0.7;
+    --glass-border: 220 40% 25% / 0.5;
+
+    /* Glow Effects */
+    --glow-primary: 243 75% 59%;
+    --glow-accent: 187 85% 53%;
+
+    --sidebar-background: 220 60% 6%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 243 75% 59%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 220 60% 12%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 220 40% 18%;
+    --sidebar-ring: 243 75% 59%;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 220 60% 6%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 60% 6%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 60% 6%;
+
+    --primary: 243 75% 59%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 220 20% 96%;
+    --secondary-foreground: 220 60% 6%;
+
+    --muted: 220 20% 96%;
+    --muted-foreground: 220 20% 40%;
+
+    --accent: 187 85% 53%;
+    --accent-foreground: 220 60% 6%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 20% 90%;
+    --input: 220 20% 90%;
+    --ring: 243 75% 59%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--novatech-indigo)) 0%,
+      hsl(var(--novatech-purple)) 50%,
+      hsl(var(--novatech-cyan)) 100%
+    );
+  }
+
+  /* Gradient Background */
+  .gradient-bg {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--novatech-midnight)) 0%,
+      hsl(var(--novatech-deep-blue)) 50%,
+      hsl(var(--novatech-midnight)) 100%
+    );
+  }
+
+  /* Animated Gradient Background */
+  .animated-gradient-bg {
+    background: linear-gradient(
+      -45deg,
+      hsl(var(--novatech-midnight)),
+      hsl(var(--novatech-deep-blue)),
+      hsl(243 75% 20%),
+      hsl(var(--novatech-midnight))
+    );
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+
+  /* Gradient Button */
+  .gradient-button {
+    @apply relative overflow-hidden;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--novatech-indigo)) 0%,
+      hsl(var(--novatech-purple)) 100%
+    );
+  }
+
+  .gradient-button::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--novatech-purple)) 0%,
+      hsl(var(--novatech-cyan)) 100%
+    );
+  }
+
+  .gradient-button:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Glassmorphism Card */
+  .glass-card {
+    @apply backdrop-blur-xl border;
+    background: hsl(var(--glass-bg));
+    border-color: hsl(var(--glass-border));
+  }
+
+  /* Glow Effect */
+  .glow {
+    box-shadow: 
+      0 0 20px hsl(var(--glow-primary) / 0.3),
+      0 0 40px hsl(var(--glow-primary) / 0.2),
+      0 0 60px hsl(var(--glow-primary) / 0.1);
+  }
+
+  .glow-accent {
+    box-shadow: 
+      0 0 20px hsl(var(--glow-accent) / 0.3),
+      0 0 40px hsl(var(--glow-accent) / 0.2),
+      0 0 60px hsl(var(--glow-accent) / 0.1);
+  }
+
+  /* Gradient Border */
+  .gradient-border {
+    @apply relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    @apply absolute inset-0 rounded-xl p-[1px];
+    background: linear-gradient(
+      135deg,
+      hsl(var(--novatech-indigo)),
+      hsl(var(--novatech-purple)),
+      hsl(var(--novatech-cyan))
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  /* Floating Animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .float-delayed {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  .float-slow {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  /* Pulse Glow */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* Shimmer Effect */
+  .shimmer {
+    @apply relative overflow-hidden;
+  }
+
+  .shimmer::after {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--novatech-cyan) / 0.1),
+      transparent
+    );
+    animation: shimmer 2s infinite;
+  }
+}
+
+@layer utilities {
+  /* Text Glow */
+  .text-glow {
+    text-shadow: 
+      0 0 10px hsl(var(--novatech-cyan) / 0.5),
+      0 0 20px hsl(var(--novatech-cyan) / 0.3),
+      0 0 30px hsl(var(--novatech-cyan) / 0.2);
+  }
+
+  .text-glow-primary {
+    text-shadow: 
+      0 0 10px hsl(var(--novatech-indigo) / 0.5),
+      0 0 20px hsl(var(--novatech-indigo) / 0.3),
+      0 0 30px hsl(var(--novatech-indigo) / 0.2);
+  }
+}
+
+/* Keyframe Animations */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px hsl(var(--glow-primary) / 0.4),
+      0 0 40px hsl(var(--glow-primary) / 0.2);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px hsl(var(--glow-primary) / 0.6),
+      0 0 60px hsl(var(--glow-primary) / 0.4);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
